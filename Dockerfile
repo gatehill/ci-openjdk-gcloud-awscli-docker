@@ -34,6 +34,10 @@ RUN mkdir -p /usr/local/gcloud \
 
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin:$HOME/.local/bin
 
+# Install kubectl
+RUN export PATH=$PATH:/usr/local/gcloud/google-cloud-sdk/bin \
+  && gcloud components install kubectl --quiet
+
 # Install Helm
 RUN export PATH=$PATH:$HOME/.local/bin/ \
   && cd /tmp \
