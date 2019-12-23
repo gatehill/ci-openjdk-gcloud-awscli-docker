@@ -42,16 +42,15 @@ RUN export PATH=$PATH:/usr/local/gcloud/google-cloud-sdk/bin \
 # Install Helm
 RUN export PATH=$PATH:$HOME/.local/bin/ \
   && cd /tmp \
-  && curl -O -L https://storage.googleapis.com/kubernetes-helm/helm-v2.12.1-linux-amd64.tar.gz \
-  && tar xvf helm-v2.12.1-linux-amd64.tar.gz \
+  && curl -O -L https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz \
+  && tar xvf helm-v3.0.2-linux-amd64.tar.gz \
   && cd $HOME/.local/bin \
   && mv /tmp/linux-amd64/helm . \
   && chmod u+x helm \
-  && helm init --client-only \
-  && helm plugin install https://github.com/databus23/helm-diff --version "v2.11.0+2"
+  && helm plugin install https://github.com/databus23/helm-diff --version "v3.0.0-rc.7"
 
 # Install Helmfile
 RUN cd $HOME/.local/bin \
-  && curl -O -L https://github.com/roboll/helmfile/releases/download/v0.41.0/helmfile_linux_amd64 \
+  && curl -O -L https://github.com/roboll/helmfile/releases/download/v0.97.0/helmfile_linux_amd64 \
   && mv helmfile_linux_amd64 helmfile \
   && chmod u+x helmfile
